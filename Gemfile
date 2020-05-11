@@ -75,8 +75,10 @@ gem 'friendly_id', '~> 5.3'
 gem 'redcarpet', '~> 3.5'
 # Fast and easy syntax highlighting for selected languages, written in Ruby.
 gem 'coderay', '~> 1.1', '>= 1.1.2'
-
-
+# Stripe is the easiest way to accept payments online. See https://stripe.com for details.
+gem 'stripe', '~> 5.21'
+# A rich text editor for everyday writing
+gem 'trix', '~> 0.11.1'
 
 
 # from previos app
