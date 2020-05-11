@@ -79,6 +79,8 @@ gem 'coderay', '~> 1.1', '>= 1.1.2'
 gem 'stripe', '~> 5.21'
 # A rich text editor for everyday writing
 gem 'trix', '~> 0.11.1'
+# Simple, Heroku-friendly Rails app configuration using ENV and a single YAML file
+gem 'figaro', '~> 1.2'
 
 
 # from previos app
