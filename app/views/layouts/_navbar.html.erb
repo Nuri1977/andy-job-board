@@ -10,7 +10,7 @@
 
 <div id="navbarBasicExample" class="navbar-menu">
     <div class="navbar-start">
-        <%= link_to "Item 1", "#", class: "navbar-item"  %>
+        <%= link_to "Post", "#", class: "navbar-item"  %>
 
 
       <div class="navbar-item has-dropdown is-hoverable">
@@ -37,6 +37,9 @@
     </div>
 
     <div class="navbar-end">
+      <div class="navbar-item">
+        <%= link_to "Post Job", new_job_path, class: "button is-primary is-rounded"  %>
+      </div>
       <div class="navbar-item">
         <div class="buttons">
           <% if user_signed_in? %>

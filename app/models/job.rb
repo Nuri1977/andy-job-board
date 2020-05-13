@@ -4,4 +4,6 @@ class Job < ApplicationRecord
 
   JOB_TYPES = ["Full-time", "Part-time", "Contract", "Freelance"]
 
+  validates :title, presence: true, length: { minimum: 3, maximum: 140 }
+
 end

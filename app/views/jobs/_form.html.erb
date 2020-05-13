@@ -1,20 +1,112 @@
 
-<%= simple_form_for(@job) do |f| %>
-  <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+<%= simple_form_for @job, html: {multipart: true} do |f| %>
+  <%= render 'layouts/validations', obj: @job %>
+  <div class="columns is-multiline">
 
-  <div class="form-inputs">
-    <%= f.input :title %>
-    <%= f.input :description %>
-    <%= f.input :url %>
-    <%= f.input :job_type %>
-    <%= f.input :location %>
-    <%= f.input :job_author %>
-    <%= f.input :remote_ok %>
-    <%= f.input :apply_url %>
-  </div>
+    <div class="field column is-4">
+      <label class="label">
+        <%= f.label :title %>
+      </label>
+      <div class="control">
+        <%= f.text_field :title, class: "input", placeholder: "Title" %>
+      </div>
+    </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
+    <div class="field column is-4">
+      <label class="label">
+        <%= f.label :location %>
+      </label>
+      <div class="control">
+        <%= f.text_field :location, class: "input", placeholder: "Location" %>
+      </div>
+    </div>
+
+    <div class="field column is-4">
+      <label class="label">
+        Company
+      </label>
+      <div class="control">
+        <%= f.text_field :job_author, class: "input", placeholder: "Company" %>
+      </div>
+    </div>
+
+    <div class="field column is-12">
+      <label class="label">
+        <%= f.label :description %>
+      </label>
+      <div class="control">
+        <%= f.text_area :description, class: "textarea", placeholder: "Description", rows: 10 %>
+      </div>
+    </div>
+
+    <div class="field column is-4">
+      <label class="label">
+        <%= f.label :url %>
+      </label>
+      <div class="control">
+        <%= f.text_field :url, class: "input", placeholder: "Url" %>
+      </div>
+    </div>
+
+    <div class="field column is-4">
+      <label class="label">
+        <%= f.label :apply_url %>
+      </label>
+      <div class="control">
+        <%= f.text_field :apply_url, class: "input", placeholder: "Apply url" %>
+      </div>
+    </div>
+
+    <div class="field column is-4">
+      <div class="control">
+        <label class="label">Job Type:</label>
+        <div class="control has-icons-left">
+          <span class="select">
+            <%= f.input_field :job_type, collection: Job::JOB_TYPES, prompt: "Select a job type" %>
+          </span>
+          <span class="icon is-small is-left">
+            <i class="fa fa-briefcase black"></i>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="field column is-6">
+      <label class="label">Work can be done remotely</label>
+
+      <div class="control">
+        <i class="fa fa-wifi"> </i>
+        <%= f.check_box :remote_ok, {}, true, false %>
+      </div>
+    </div>
+
+    <div class="field column is-6">
+      <div class="control">
+        <label class="label">Logo Image</label>
+        <div class="file">
+          <label class="file-label">
+            <%= f.input :avatar, as: :file, required: false, input_html: { class:"file-input job-avatar" }, label: false, wrapper: false %>
+              <span class="file-cta">
+                <span class="file-icon"><i class="fa fa-upload"></i></span>
+                <span class="file-label">Choose a file…</span>
+              </span>
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <output id="list"></output>
+    </div>
+
+    <div class="column is-12">
+      <%= render 'payment' %>
+    </div>
+
+
+    <div class="column is-12">
+      <%= f.button :submit, class: "button is-primary is-large is-rounded mv4" %>
+    </div>
+
   </div>
 <% end %>
+
